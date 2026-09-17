@@ -1,50 +1,32 @@
-# Welcome to your Expo app 👋
+# WiseScan — Mobile Scan & Dokumenten-Manager
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+WiseScan ist eine performante, mobile React-Native-Anwendung zum raschen Erfassen, Optimieren und Verwalten von Dokumenten sowie QR-/Barcodes mit Anbindung an ein PHP-Backend.
 
-## Get started
+---
 
-1. Install dependencies
+### 🏗️ Architektur & Datenfluss
 
-   ```bash
-   npm install
-   ```
+Die App folgt dem **Offline-First-Ansatz**:
+1. **Erfassung & Aufbereitung (Client):** Kamera-Scan, automatische Bildoptimierung und Zuweisung von Tags auf dem Smartphone (React Native / Expo).
+2. **Lokale Speicherung:** Scans bleiben offline sofort verfügbar und durchsuchbar.
+3. **Synchronisation (Fullstack):** Sobald eine Verbindung besteht, werden Dokumente per JSON/FormData an die PHP-REST-API übertragen und in der Datenbank abgelegt.
 
-2. Start the app
+---
 
-   ```bash
-    npx expo start
-   ```
+### ✨ Highlights & Features
 
-In the output, you'll find options to open the app in a
+* **Smart Scan:** Automatische Bildkorrektur & Zuschnitt.
+* **OCR-Texterkennung:** Volltextsuche direkt im erfassten Dokument.
+* **Code-Scanner:** Integriertes Auslesen von QR- und Barcodes.
+* **Backend-Sync:** Schnittstelle zur zentralen Datenhaltung.
+* **Ergonomische UI:** Ergänzende Drawer-Navigation mit Hell-/Dunkelmodus (Tailwind CSS).
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 🔌 API Endpunkte (PHP-Backend)
 
-## Get a fresh project
+* `POST /api/v1/scans` — Überträgt neue Dokumenten-Scans inkl. Metadaten.
+* `GET /api/v1/documents` — Lädt archivierte Scans für den Nutzer.
+* `POST /api/v1/ocr` — Verarbeitet Bilddaten für die Texterkennung.
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
